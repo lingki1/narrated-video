@@ -41,3 +41,7 @@ scripts/        new_project.py（从 kit 建一个项目）
 ```
 
 一个项目里，一条片子一个文件夹：`videos/<名字>/` 放它的画面代码，里面 `vo/` 配音、`docs/` 文稿、`out/` 产物。项目自己的事（给谁看、谁在讲、配色、红线）写在项目的 `PROFILE.md` 里，不写进技能。
+
+## 许可
+
+MIT，见 [LICENSE](LICENSE)。
