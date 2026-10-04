@@ -1,0 +1,19 @@
+/* Template "data" (数据图表): a headline, one chart, the source — one conclusion per screen. */
+#viewport.tpl-data { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-data .dt-panel { color: var(--ink); }
+.tpl-data .dt-panel h2 { position: absolute; left: 80px; right: 80px; top: 240px; margin: 0; font: 900 84px/1.2 var(--serif); text-wrap: balance; }
+.tpl-data .dt-body { position: absolute; left: 80px; top: 470px; width: 920px; height: 860px; }
+.tpl-data .dt-src { position: absolute; left: 80px; top: 1350px; font: 500 28px/1 var(--sans); color: var(--mute); letter-spacing: 1px; }
+.tpl-data .dt-num { position: absolute; left: 0; right: 0; display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; }
+.tpl-data .dt-num b { font-size: 340px; line-height: 0.9; color: var(--accent-deep); letter-spacing: -10px; }
+.tpl-data .dt-num i { font: 900 100px/1 var(--serif); font-style: normal; }
+.tpl-data .dt-num span { flex-basis: 100%; margin-top: 16px; font: 800 48px/1.2 var(--sans); }
+.tpl-data .dt-bars { position: absolute; left: 0; right: 0; }
+.tpl-data .dt-bar { display: grid; grid-template-columns: 250px 1fr 210px; align-items: center; gap: 20px; height: 110px; font: 800 46px/1 var(--sans); }
+.tpl-data .dt-bar div { height: 62px; border: 6px solid var(--ink); box-sizing: border-box; background: #FFFFFF; }
+.tpl-data .dt-bar i { display: block; height: 100%; background: var(--ink); }
+.tpl-data .dt-bar.hot i { background: var(--accent); }
+.tpl-data .dt-bar b { font-size: 56px; text-align: right; white-space: nowrap; letter-spacing: 0; }
+.tpl-data .dt-line { position: absolute; left: 0; color: var(--ink); }
+.tpl-data .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }
+.tpl-data .nv-card { top: 1180px; z-index: 8; }

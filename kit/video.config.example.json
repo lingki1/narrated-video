@@ -1,0 +1,14 @@
+{
+  "_": "Copy to video.config.json and fill in what differs from the defaults. Everything here is about THIS machine; nothing about the film.",
+  "playwrightCore": "path/to/node_modules/playwright-core  (leave out if `npm i playwright-core` was run in this folder)",
+  "ffmpeg": "ffmpeg",
+  "python": "python",
+  "tts": {
+    "qwenBase": "path/to/Qwen3-TTS-12Hz-1.7B-Base  (leave out to load it from Hugging Face)",
+    "qwenDesign": "path/to/Qwen3-TTS-12Hz-1.7B-VoiceDesign",
+    "hfHome": "path/to/hf-cache",
+    "whisperCache": "path/to/whisper-cache",
+    "pronounce": [["\\bAPI\\b", "A P I"]],
+    "aliases": []
+  }
+}

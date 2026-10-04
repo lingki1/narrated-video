@@ -1,0 +1,7 @@
+/* Template "vn" (视觉小说对话框): full-screen background, a standing character, a dialogue box with a name plate at the bottom. */
+.tpl-vn .vn-box { position: absolute; left: 50px; top: 1100px; width: 980px; height: 400px; box-sizing: border-box; padding: 62px 50px 40px; background: var(--ink); color: var(--paper); border: 8px solid var(--paper); box-shadow: 12px 12px 0 var(--accent); z-index: 4; }
+.tpl-vn .vn-name { position: absolute; left: 34px; top: -46px; padding: 12px 34px 16px; background: var(--accent); color: var(--ink); border: 8px solid var(--paper); font: 900 50px/1 var(--serif); letter-spacing: 4px; }
+.tpl-vn .vn-box.other .vn-name { background: var(--paper); }
+.tpl-vn .vn-text { font: 800 62px/1.42 var(--sans); letter-spacing: 1px; }
+.tpl-vn .vn-next { position: absolute; right: 34px; bottom: 22px; font: 900 40px/1 var(--sans); font-style: normal; color: var(--accent); }
+.tpl-vn .nv-end { top: 420px; }

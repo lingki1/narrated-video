@@ -1,0 +1,10 @@
+/* Template "letter" (信纸 / 日记手写): lined paper; the narration writes itself in handwriting; the page moves up as it fills. */
+.tpl-letter .nv-bg { background: var(--desk); }
+.tpl-letter .lt-sheet { position: absolute; left: 50px; top: 200px; width: 980px; height: 1330px; background: #FFFFFF; border: 8px solid var(--ink); box-sizing: border-box; box-shadow: 16px 16px 0 var(--ink); overflow: hidden; }
+.tpl-letter .lt-date { position: absolute; right: 50px; top: 40px; font-size: 54px; line-height: 1; color: var(--mute); z-index: 2; background: #FFFFFF; padding: 0 0 10px 20px; }
+.tpl-letter .lt-scroll { position: absolute; left: 0; right: 0; top: 0; }
+.tpl-letter .lt-lines { position: absolute; left: 0; right: 0; top: 0; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 100px, var(--mute) 100px, var(--mute) 104px); background-position: 0 164px; opacity: 0.35; }
+.tpl-letter .lt-margin { position: absolute; left: 92px; top: 0; bottom: 0; width: 6px; background: var(--accent); display: block; }
+.tpl-letter .lt-text span { position: absolute; width: 64px; text-align: center; font-size: 66px; line-height: 104px; color: var(--ink); }
+.tpl-letter .lt-text span.other { color: var(--accent-deep); }
+.tpl-letter .lt-text span.hot { box-shadow: inset 0 -16px 0 var(--accent); }

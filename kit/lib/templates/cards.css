@@ -1,0 +1,17 @@
+/* Template "cards" (知识卡片): one card at a time — number, title, rows; narration in a strip under the card. */
+#viewport.tpl-cards { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-cards .nv-bg { background: var(--desk); }
+.tpl-cards .cd-card { position: absolute; left: 80px; top: 250px; width: 920px; height: 1060px; box-sizing: border-box; padding: 50px 56px; background: #FFFFFF; border: 10px solid var(--ink); box-shadow: 18px 18px 0 var(--accent); transform-origin: 50% 100%; }
+.tpl-cards .cd-top { display: flex; align-items: center; gap: 26px; height: 120px; }
+.tpl-cards .cd-top i { font-size: 130px; line-height: 1; color: var(--accent-deep); font-style: normal; }
+.tpl-cards .cd-top em { padding: 10px 22px 12px; background: var(--ink); color: var(--paper); font: 800 38px/1 var(--sans); font-style: normal; letter-spacing: 3px; }
+.tpl-cards .cd-card h2 { margin: 30px 0 34px; font: 900 96px/1.18 var(--serif); color: var(--ink); text-wrap: balance; }
+.tpl-cards .cd-row { display: flex; align-items: flex-start; gap: 24px; padding: 22px 0; border-top: 6px solid var(--ink); font: 800 56px/1.25 var(--sans); color: var(--ink); }
+.tpl-cards .cd-row b { flex: none; width: 70px; height: 70px; display: inline-flex; align-items: center; justify-content: center; background: var(--accent); font: 900 46px/1 var(--num); }
+.tpl-cards .cd-row b.no { background: var(--ink); color: var(--paper); }
+.tpl-cards .cd-big { margin-top: 40px; text-align: center; font: 900 260px/1 var(--serif); color: var(--accent-deep); transform-origin: 50% 50%; }
+.tpl-cards .cd-dots { position: absolute; left: 0; right: 0; top: 1350px; display: flex; justify-content: center; gap: 18px; }
+.tpl-cards .cd-dots i { width: 22px; height: 22px; border-radius: 11px; border: 5px solid var(--ink); box-sizing: border-box; display: block; }
+.tpl-cards .cd-dots i.on { background: var(--ink); width: 60px; }
+.tpl-cards .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }
+.tpl-cards .nv-card { top: 1180px; z-index: 8; }

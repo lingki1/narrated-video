@@ -1,0 +1,13 @@
+/* Template "doodle" (白板手绘 / 简笔画): white sheet, marker lines that draw themselves, handwriting, an accent highlighter. */
+#viewport.tpl-doodle { background: #FFFFFF; --subs-top: 1430px; --sub-size: 68px; }
+.tpl-doodle .nv-bg { background: #FFFFFF; }
+.tpl-doodle .dd-page { color: var(--ink); }
+.tpl-doodle .dd-page text { font-family: var(--hand); fill: var(--ink); }
+/* captions: handwriting with a highlighter stroke under it */
+.tpl-doodle .nv-sblock .plate { --rot: 0deg !important; background: none; color: var(--ink); box-shadow: inset 0 -0.42em 0 var(--accent); font-family: var(--hand); font-weight: 400; letter-spacing: 2px; padding: 0 10px 2px; }
+.tpl-doodle .nv-sblock .plate.dark { background: none; color: var(--ink); box-shadow: inset 0 -0.42em 0 var(--accent); }
+/* other voices: a hand-drawn speech bubble */
+.tpl-doodle .nv-card { top: 250px; left: 110px; width: 860px; }
+.tpl-doodle .nv-card .tag { background: none; color: var(--ink); font-family: var(--hand); font-weight: 400; font-size: 56px; letter-spacing: 4px; padding: 0 0 6px 20px; }
+.tpl-doodle .nv-card .say { background: #FFFFFF; border: 8px solid var(--ink); border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px; box-shadow: none; font-family: var(--hand); font-weight: 400; font-size: 96px; padding: 20px 50px 30px; }
+.tpl-doodle .nv-end .title { font-family: var(--hand); font-weight: 400; }

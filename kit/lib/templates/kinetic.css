@@ -1,0 +1,13 @@
+/* Template "kinetic" (文字快闪): every clause fills the screen in huge type; the ground flips between paper, ink and the accent. */
+.tpl-kinetic .kn-layer { position: absolute; inset: 0; }
+.tpl-kinetic .kn-slide { position: absolute; inset: -80px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--serif); font-weight: 900; line-height: 1.12; }
+.tpl-kinetic .kn-row { display: flex; white-space: nowrap; }
+.tpl-kinetic .kn-row span { display: inline-block; transform-origin: 50% 60%; }
+.tpl-kinetic .kn-a { background: var(--paper); color: var(--ink); }
+.tpl-kinetic .kn-b { background: var(--ink); color: var(--paper); }
+.tpl-kinetic .kn-c { background: var(--accent); color: var(--ink); }
+.tpl-kinetic .kn-a .hot { color: var(--accent-deep); }
+.tpl-kinetic .kn-b .hot { color: var(--accent); }
+.tpl-kinetic .kn-c .hot { color: var(--paper); }
+.tpl-kinetic .kn-other { background: var(--ink); color: var(--accent); }
+.tpl-kinetic .kn-who { font: 900 60px/1 var(--sans); letter-spacing: 12px; color: var(--paper); margin-bottom: 40px; }

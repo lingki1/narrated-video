@@ -1,0 +1,16 @@
+/* Template "notes" (便签墙 / 手账拼贴): a desk with sticky notes, taped photos and scraps; narration on a label-maker strip. */
+#viewport.tpl-notes { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-notes .nv-bg, .tpl-notes .nt-desk { background: var(--desk); }
+.tpl-notes .nt-grid { color: var(--ink); opacity: 0.12; }
+.tpl-notes .nt-note { position: absolute; box-sizing: border-box; padding: 34px 30px 40px; line-height: 1.25; color: var(--ink); box-shadow: 9px 9px 0 rgba(17, 17, 18, 0.22); transform-origin: 50% 0; white-space: normal; }
+.tpl-notes .nt-accent { background: var(--accent); }
+.tpl-notes .nt-paper { background: var(--paper); }
+.tpl-notes .nt-white { background: #FFFFFF; }
+.tpl-notes .nt-ink { background: var(--ink); color: var(--paper); }
+.tpl-notes .nt-note.struck { text-decoration: line-through; text-decoration-thickness: 8px; opacity: 0.55; }
+.tpl-notes .nt-photo { position: absolute; background: #FFFFFF; padding: 18px 18px 22px; box-shadow: 9px 9px 0 rgba(17, 17, 18, 0.22); transform-origin: 50% 0; }
+.tpl-notes .nt-photo svg { display: block; background: var(--paper); }
+.tpl-notes .nt-photo span { display: block; margin-top: 12px; text-align: center; font-size: 46px; line-height: 1; color: var(--ink); }
+.tpl-notes .nt-tape { position: absolute; left: 50%; top: -26px; width: 150px; height: 46px; margin-left: -75px; background: var(--accent); opacity: 0.8; transform: rotate(-4deg); display: block; }
+.tpl-notes .nt-scrap { position: absolute; padding: 14px 24px 18px; background: #FFFFFF; border: 6px dashed var(--ink); font-family: var(--sans); font-weight: 800; color: var(--ink); white-space: nowrap; transform-origin: 50% 0; }
+.tpl-notes .nv-sblock .plate { --rot: 0deg !important; background: var(--ink); color: var(--paper); box-shadow: none; border-radius: 8px; font-family: var(--sans); font-weight: 800; letter-spacing: 5px; padding: 10px 26px 14px; }

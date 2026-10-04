@@ -1,0 +1,89 @@
+/* Base styles shared by every template (lib/film.js). 1080×1920. Flat colour only; every colour comes from the theme variables that
+   createFilm() sets on #viewport: --ink --paper --accent --accent-deep --desk --night --floor-night --mute.
+   A template's own stylesheet (lib/templates/<name>.css) places and restyles these pieces; a reel's style.css adds its own. */
+html, body { margin: 0; background: #111112; overflow: hidden; }
+#viewport { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 0 0; overflow: hidden; background: var(--paper);
+  --serif: 'Noto Serif SC', serif; --sans: 'Noto Sans SC', sans-serif; --num: 'Inter Tight', sans-serif; --script: 'Instrument Serif', serif; --hand: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+  --subs-top: 1252px; --sub-size: 54px; }
+#viewport.night { background: var(--night); }
+.nv-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; transform-origin: 540px 960px; }
+.nv-bg { position: absolute; inset: -200px; background: var(--paper); }
+.nv-stage.night .nv-bg { background: var(--night); }
+svg.nv-layer { pointer-events: none; }
+.nv-board.nv-full { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; }
+.nv-shot { position: absolute; inset: 0; overflow: hidden; }
+
+/* pieces for the shots */
+.nv-t { position: absolute; white-space: nowrap; transform-origin: 50% 50%; }
+.nv-serif { font-family: var(--serif); font-weight: 900; }
+.nv-sans { font-family: var(--sans); font-weight: 800; }
+.nv-num { font-family: var(--num); font-weight: 900; letter-spacing: -2px; font-variant-numeric: tabular-nums; }
+.nv-hand { font-family: var(--hand); font-weight: 400; }
+.nv-plate { position: absolute; padding: 12px 24px 16px; background: var(--ink); color: var(--paper); white-space: nowrap; font: 900 46px/1.15 var(--serif); box-shadow: 7px 7px 0 var(--accent); transform-origin: 50% 50%; }
+.nv-plate.accent { background: var(--accent); color: var(--ink); box-shadow: 7px 7px 0 var(--ink); }
+.nv-plate.paper { background: var(--paper); color: var(--ink); box-shadow: 7px 7px 0 var(--accent-deep); }
+.nv-shot.night .nv-plate.accent, .nv-board.night .nv-plate.accent { box-shadow: 7px 7px 0 var(--paper); }
+.nv-chip { position: absolute; padding: 10px 22px 12px; border: 5px solid var(--ink); background: var(--paper); color: var(--ink); white-space: nowrap; font: 800 38px/1.1 var(--sans); transform-origin: 50% 50%; }
+.nv-chip.accent { border-color: var(--accent-deep); color: var(--accent-deep); }
+.nv-chip b { font-weight: 900; }
+.nv-stamp { position: absolute; padding: 10px 34px 18px; border: 12px solid var(--accent-deep); color: var(--accent-deep); background: rgba(255, 255, 255, 0.92); white-space: nowrap; font: 900 130px/1.05 var(--serif); transform-origin: 50% 50%; }
+.nv-doc { position: absolute; background: #FFFFFF; border: 8px solid var(--ink); box-sizing: border-box; box-shadow: 10px 10px 0 var(--ink); transform-origin: 50% 100%; overflow: hidden; }
+.nv-doc .hd { height: 84px; background: var(--accent); color: var(--ink); font: 900 46px/84px var(--serif); text-align: center; letter-spacing: 4px; }
+.nv-doc u { display: block; height: 12px; margin: 30px 26px 0; background: var(--ink); opacity: 0.8; text-decoration: none; }
+.nv-doc u:nth-child(odd) { margin-right: 90px; }
+.nv-photo { position: absolute; background: #FFFFFF; padding: 14px 14px 0; box-sizing: border-box; box-shadow: 8px 8px 0 var(--accent); transform-origin: 50% 50%; }
+.nv-photo svg { display: block; }
+
+/* the pinned card: a line spoken by someone other than the narrator */
+.nv-card { position: absolute; left: 60px; top: 268px; width: 960px; transform-origin: 50% 50%; z-index: 5; }
+.nv-card .tag { display: inline-block; padding: 8px 20px 10px; background: var(--ink); color: var(--paper); font: 900 34px/1 var(--sans); letter-spacing: 6px; }
+.nv-card .say { padding: 26px 34px 32px; background: var(--accent); color: var(--ink); font: 900 76px/1.28 var(--serif); box-shadow: 10px 10px 0 var(--ink); min-height: 80px; text-wrap: balance; }
+.nv-card .say .c { display: inline-block; }
+.nv-card.plain .tag { background: var(--accent); color: var(--ink); }
+.nv-card.plain .say { background: var(--ink); color: var(--paper); box-shadow: 10px 10px 0 var(--accent); }
+.nv-stage.night .nv-card .tag { background: var(--paper); color: var(--ink); }
+.nv-stage.night .nv-card .say { box-shadow: 10px 10px 0 var(--paper); }
+.nv-stage.night .nv-card.plain .say { background: var(--paper); color: var(--ink); box-shadow: 10px 10px 0 var(--accent-deep); }
+
+/* closing card */
+.nv-end { position: absolute; left: 0; right: 0; top: 660px; text-align: center; color: var(--ink); z-index: 6; }
+.nv-stage.night .nv-end { color: var(--paper); }
+.nv-end .word { font: italic 400 190px/1 var(--script); color: var(--accent-deep); }
+.nv-end .title { font: 900 170px/1.1 var(--serif); }
+.nv-end .cta { display: inline-block; margin-top: 30px; padding: 16px 40px 20px; background: var(--ink); color: var(--paper); font: 900 54px/1.1 var(--serif); box-shadow: 8px 8px 0 var(--accent); }
+.nv-end .fine { margin-top: 44px; font: 500 26px/1.5 var(--sans); color: var(--mute); letter-spacing: 1px; }
+
+/* subtitles: cut-out strips, one clause at a time (templates move and restyle them) */
+.nv-subs { position: absolute; left: 0; right: 0; top: var(--subs-top); pointer-events: none; z-index: 7; }
+.nv-sblock { position: absolute; left: 0; right: 0; top: 0; display: flex; flex-direction: column; align-items: center; }
+.nv-sblock .plate { width: fit-content; padding: 8px 20px 12px; background: var(--ink); color: var(--paper); white-space: nowrap; font: 900 var(--sub-size)/1.22 var(--serif); letter-spacing: 1px;
+  box-shadow: 7px 7px 0 var(--accent); transform-origin: 50% 50%; position: absolute; top: 0; }
+.nv-sblock .plate .c { display: inline-block; }
+.nv-sblock .plate.dark { background: var(--paper); color: var(--ink); box-shadow: 7px 7px 0 var(--accent-deep); }
+
+/* a wide film (createFilm({ size: [1920, 1080] })): words sit along the bottom, the pinned card and the closing card are centred */
+#viewport.wide { --subs-top: 952px; --sub-size: 46px; }
+#viewport.wide .nv-card { left: 480px; top: 40px; width: 960px; }
+#viewport.wide .nv-card .say { font-size: 60px; }
+#viewport.wide .nv-end { top: 150px; }
+#viewport.wide .nv-end .word { font-size: 170px; }
+
+/* the chapter bar (film.start({ chapters })): the film's progress along the bottom edge of a wide film, cut into chapters.
+   The chapter being played is lit (paper, ink words); played ones are quiet, later ones quieter; a thin accent line along the
+   top edge runs to the playhead. (The second copy of the labels in .fill is no longer shown.) */
+.nv-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 42px; background: var(--ink); overflow: hidden; z-index: 8; display: none; pointer-events: none; }
+#viewport.wide .nv-progress { display: block; }
+.nv-progress .row { position: absolute; left: 0; top: 0; height: 100%; }
+.nv-progress .seg { position: absolute; top: 0; height: 100%; box-sizing: border-box; text-align: center; white-space: nowrap; overflow: hidden; color: rgba(242, 238, 232, 0.72);
+  font: 800 23px/44px var(--sans); letter-spacing: 1px; border-left: 3px solid rgba(242, 238, 232, 0.35); }
+.nv-progress .seg:first-child { border-left: 0; }
+.nv-progress .seg span { display: inline-block; }
+.nv-progress .seg i { font: 800 0.86em/1 var(--num); font-style: normal; letter-spacing: 0; margin-right: 0.5em; opacity: 0.7; }
+.nv-progress .track .seg.later { color: rgba(242, 238, 232, 0.4); }
+.nv-progress .track .seg.now { background: var(--paper); color: var(--ink); }
+.nv-progress .fill { position: absolute; left: 0; top: 0; height: 6px; overflow: hidden; background: var(--accent); z-index: 2; }
+.nv-progress .fill .row { display: none; }
+.nv-progress .head { position: absolute; top: 0; width: 6px; height: 12px; background: var(--accent); z-index: 2; border-radius: 0 0 3px 3px; }
+/* with the bar on, the words sit a little higher and a little smaller */
+#viewport.wide.has-progress { --subs-top: 946px; --sub-size: 44px; }
+

@@ -1,0 +1,15 @@
+/* Template "picture" (2D 绘本): full-screen illustration · caption band near the bottom · other voices in a bubble near the top. */
+#viewport.tpl-picture { --subs-top: 1400px; --sub-size: 52px; }
+.tpl-picture .pic-cam { position: absolute; inset: 0; transform-origin: 50% 55%; }
+.tpl-picture .nv-sblock .plate { --rot: 0deg !important; border-radius: 22px; padding: 16px 34px 20px; box-shadow: none; background: var(--ink); color: var(--paper); font-family: var(--sans); font-weight: 800; letter-spacing: 2px; }
+.tpl-picture .nv-sblock .plate.dark { background: var(--paper); color: var(--ink); box-shadow: none; }
+.tpl-picture .nv-card { top: 250px; left: 90px; width: 900px; }
+.tpl-picture .nv-card .tag { border-radius: 14px 14px 0 0; padding: 10px 24px 12px; }
+.tpl-picture .nv-card .say { border-radius: 0 34px 34px 34px; background: #FFFFFF; border: 8px solid var(--ink); box-shadow: 10px 10px 0 var(--accent); font-size: 72px; }
+.tpl-picture .nv-stage.night .nv-card .say { box-shadow: 10px 10px 0 var(--accent); border-color: var(--paper); background: var(--paper); }
+#viewport.tpl-picture.wide { --subs-top: 962px; --sub-size: 46px; }
+.tpl-picture.wide .nv-card { top: 36px; left: 510px; width: 900px; }
+.tpl-picture.wide .nv-card .say { font-size: 58px; }
+#viewport.tpl-picture.wide.has-progress { --subs-top: 946px; --sub-size: 44px; }
+.tpl-picture.wide.has-progress .nv-sblock .plate { padding: 12px 30px 16px; }
+

@@ -1,0 +1,29 @@
+/* Template "screen" (假界面 / 录屏感): a made-up device screen — windows, typing, notifications. Generic look, nobody's real UI. */
+#viewport.tpl-screen { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-screen .nv-bg, .tpl-screen .sc-desk { background: var(--desk); }
+.tpl-screen .nv-stage.night .sc-desk { background: var(--night); }
+.tpl-screen .sc-bar { position: absolute; left: 60px; right: 60px; top: 226px; height: 60px; display: flex; align-items: center; justify-content: space-between; color: var(--ink); font-size: 44px; z-index: 3; }
+.tpl-screen .nv-stage.night .sc-bar { color: var(--paper); }
+.tpl-screen .sc-bar span { display: flex; gap: 10px; align-items: flex-end; }
+.tpl-screen .sc-bar span i { display: block; width: 12px; background: currentColor; }
+.tpl-screen .sc-bar span i:nth-child(1) { height: 16px; } .tpl-screen .sc-bar span i:nth-child(2) { height: 26px; } .tpl-screen .sc-bar span i:nth-child(3) { height: 36px; }
+.tpl-screen .sc-win { position: absolute; box-sizing: border-box; background: #FFFFFF; border: 8px solid var(--ink); box-shadow: 12px 12px 0 var(--ink); overflow: hidden; transform-origin: 50% 40%; }
+.tpl-screen .nv-stage.night .sc-win { box-shadow: 12px 12px 0 var(--accent); }
+.tpl-screen .sc-title { height: 76px; display: flex; align-items: center; gap: 12px; padding: 0 22px; background: var(--ink); color: var(--paper); font: 800 36px/1 var(--sans); }
+.tpl-screen .sc-title i { display: block; width: 20px; height: 20px; border-radius: 10px; background: var(--paper); opacity: 0.5; }
+.tpl-screen .sc-title i:first-child { background: var(--accent); opacity: 1; }
+.tpl-screen .sc-title b { margin-left: 14px; letter-spacing: 2px; }
+.tpl-screen .sc-body { padding: 26px 30px; font: 800 52px/1.4 var(--sans); color: var(--ink); }
+.tpl-screen .sc-line { min-height: 74px; }
+.tpl-screen .sc-line.out span { text-decoration: line-through; color: var(--mute); }
+.tpl-screen .sc-line.big { font: 900 130px/1.2 var(--serif); }
+.tpl-screen .sc-caret { display: inline-block; width: 6px; height: 0.95em; margin-left: 6px; background: var(--accent-deep); vertical-align: -0.12em; }
+.tpl-screen .sc-toast { position: absolute; left: 90px; width: 900px; box-sizing: border-box; padding: 26px 34px 30px; background: var(--ink); color: var(--paper); border: 8px solid var(--paper); box-shadow: 10px 10px 0 var(--accent); z-index: 4; }
+.tpl-screen .sc-toast b { display: block; font: 900 38px/1 var(--sans); letter-spacing: 3px; color: var(--accent); margin-bottom: 14px; }
+.tpl-screen .sc-toast span { font: 800 56px/1.25 var(--sans); }
+.tpl-screen .sc-todo { display: flex; align-items: center; gap: 22px; min-height: 84px; }
+.tpl-screen .sc-todo i { flex: none; width: 46px; height: 46px; border: 7px solid var(--ink); box-sizing: border-box; display: block; }
+.tpl-screen .sc-todo.done i { background: var(--accent); }
+.tpl-screen .sc-todo.done span { text-decoration: line-through; color: var(--mute); }
+.tpl-screen .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }
+.tpl-screen .nv-card { display: none !important; }

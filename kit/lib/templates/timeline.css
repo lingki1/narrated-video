@@ -1,0 +1,19 @@
+/* Template "timeline" (时间轴 / 路线图): one line down the screen; stops light up with a time and a short card; the view follows. */
+#viewport.tpl-timeline { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-timeline .tl-view { position: absolute; left: 60px; top: 226px; width: 960px; height: 1150px; overflow: hidden; }
+.tpl-timeline .tl-track { position: absolute; left: 0; right: 0; top: 0; }
+.tpl-timeline .tl-line { position: absolute; left: 64px; top: 0; width: 12px; height: 6000px; background: var(--ink); opacity: 0.18; display: block; }
+.tpl-timeline .nv-stage.night .tl-line { background: var(--paper); }
+.tpl-timeline .tl-fill { position: absolute; left: 64px; top: 0; width: 12px; background: var(--accent-deep); display: block; }
+.tpl-timeline .tl-stop { position: absolute; left: 0; right: 0; padding-left: 150px; box-sizing: border-box; color: var(--ink); }
+.tpl-timeline .nv-stage.night .tl-stop { color: var(--paper); }
+.tpl-timeline .tl-stop > i { position: absolute; left: 40px; top: 6px; width: 60px; height: 60px; border-radius: 30px; box-sizing: border-box; border: 10px solid var(--ink); background: var(--paper); display: block; }
+.tpl-timeline .tl-stop.on > i { background: var(--accent); border-color: var(--accent-deep); }
+.tpl-timeline .tl-stop > b { display: block; font-size: 84px; line-height: 0.95; }
+.tpl-timeline .tl-card { margin-top: 18px; padding: 26px 32px 32px; background: #FFFFFF; color: var(--ink); border: 8px solid var(--ink); box-shadow: 10px 10px 0 var(--accent); width: 720px; box-sizing: border-box; }
+.tpl-timeline .tl-card h3 { margin: 0; font: 900 64px/1.2 var(--serif); }
+.tpl-timeline .tl-card p { margin: 14px 0 0; font: 800 44px/1.35 var(--sans); color: var(--mute); }
+.tpl-timeline .tl-stop.big .tl-card h3 { font-size: 150px; color: var(--accent-deep); }
+.tpl-timeline .tl-stop.past { opacity: 0.45 !important; }
+.tpl-timeline .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }
+.tpl-timeline .nv-card { top: 1180px; z-index: 8; }

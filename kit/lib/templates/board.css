@@ -1,0 +1,12 @@
+/* Template "board" (画板讲述): story clock on top · a framed board for small drawings · the narrator standing bottom right · strip subtitles.
+   Key information stays inside y 220–1500. */
+.tpl-board .nv-floor { position: absolute; left: -200px; right: -200px; top: 1690px; height: 600px; background: var(--desk); }
+.tpl-board .nv-stage.night .nv-floor { background: var(--floor-night); }
+.tpl-board .nv-head { position: absolute; left: 70px; top: 236px; width: 940px; height: 300px; color: var(--ink); }
+.tpl-board .nv-stage.night .nv-head { color: var(--paper); }
+.tpl-board .nv-head .date { position: absolute; left: 6px; top: 0; font: 800 36px/1 var(--sans); letter-spacing: 3px; opacity: 0.75; }
+.tpl-board .nv-head .time { position: absolute; left: 0; top: 62px; font: 900 200px/1 var(--num); letter-spacing: -6px; font-variant-numeric: tabular-nums; }
+.tpl-board .nv-head .chip { position: absolute; right: 0; top: -12px; padding: 12px 22px 14px; background: var(--accent); color: var(--ink); font: 900 42px/1 var(--sans); letter-spacing: 1px;
+  font-variant-numeric: tabular-nums; transform: rotate(-3deg); }
+.tpl-board .nv-board { position: absolute; left: 70px; top: 576px; width: 940px; height: 720px; background: #FFFFFF; border: 10px solid var(--ink); box-sizing: border-box; overflow: hidden; transform-origin: 50% 0; }
+.tpl-board .nv-stage.night .nv-board { border-color: var(--paper); background: var(--night); }

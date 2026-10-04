@@ -1,0 +1,5 @@
+{
+  "_": "Copy to voices.json. One entry per voice letter used in lines.js. `ref` is a 8–15 s clip of that voice, `text` is exactly what the clip says. Voices are designed from a text description with tools/tts/voice_design.py (they belong to no real person); a real person's voice only with that person's permission.",
+  "L": { "ref": "assets/voice-ref/narrator.wav", "text": "参考音频里说的那句话，一字不差。" },
+  "S": { "ref": "assets/voice-ref/her.wav", "text": "参考音频里说的那句话，一字不差。" }
+}

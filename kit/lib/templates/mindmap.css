@@ -1,0 +1,12 @@
+/* Template "mindmap" (思维导图展开): a word in the middle, branches that grow out of it, leaves under each branch. */
+#viewport.tpl-mindmap { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-mindmap .mm-link { fill: none; stroke: var(--ink); stroke-width: 12; stroke-linecap: round; }
+.tpl-mindmap .nv-stage.night .mm-link { stroke: var(--paper); }
+.tpl-mindmap .mm-center { position: absolute; padding: 26px 44px 34px; background: var(--ink); color: var(--paper); font: 900 96px/1.1 var(--serif); white-space: nowrap; box-shadow: 12px 12px 0 var(--accent); transform-origin: 50% 50%; z-index: 2; }
+.tpl-mindmap .mm-branch { position: absolute; display: flex; flex-direction: column; align-items: center; gap: 14px; z-index: 2; }
+.tpl-mindmap .mm-branch.up { flex-direction: column-reverse; transform-origin: 50% 100%; }
+.tpl-mindmap .mm-branch.down { transform-origin: 50% 0; }
+.tpl-mindmap .mm-branch b { padding: 16px 30px 22px; background: var(--accent); color: var(--ink); border: 8px solid var(--ink); font: 900 64px/1.1 var(--serif); white-space: nowrap; }
+.tpl-mindmap .mm-branch span { padding: 8px 20px 12px; background: #FFFFFF; border: 6px solid var(--ink); font: 800 46px/1.15 var(--sans); color: var(--ink); white-space: nowrap; }
+.tpl-mindmap .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }
+.tpl-mindmap .nv-card { top: 1380px; z-index: 8; }

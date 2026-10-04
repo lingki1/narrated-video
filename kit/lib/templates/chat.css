@@ -1,0 +1,15 @@
+/* Template "chat" (聊天记录): a generic message thread (not any real app's look) with the narrator's caption underneath. */
+#viewport.tpl-chat { --subs-top: 1392px; --sub-size: 50px; }
+.tpl-chat .ch-app { position: absolute; left: 60px; top: 226px; width: 960px; height: 1110px; background: #FFFFFF; border: 10px solid var(--ink); box-sizing: border-box; box-shadow: 14px 14px 0 var(--accent); overflow: hidden; }
+.tpl-chat .ch-head { height: 124px; display: flex; align-items: center; gap: 24px; padding: 0 30px; border-bottom: 8px solid var(--ink); background: var(--paper); font: 900 54px/1 var(--serif); color: var(--ink); }
+.tpl-chat .ch-av { flex: none; width: 76px; height: 76px; border-radius: 38px; background: var(--ink); color: var(--paper); display: inline-flex; align-items: center; justify-content: center; font: 900 36px/1 var(--sans); }
+.tpl-chat .ch-av.me { background: var(--accent); color: var(--ink); }
+.tpl-chat .ch-view { position: absolute; left: 0; right: 0; top: 132px; bottom: 0; overflow: hidden; }
+.tpl-chat .ch-list { position: absolute; left: 0; right: 0; top: 0; }
+.tpl-chat .ch-row { position: absolute; left: 26px; right: 26px; display: flex; align-items: flex-end; gap: 18px; }
+.tpl-chat .ch-me { justify-content: flex-end; }
+.tpl-chat .ch-b { max-width: 640px; padding: 22px 32px 26px; border: 7px solid var(--ink); border-radius: 36px 36px 36px 8px; background: #FFFFFF; color: var(--ink); font: 800 52px/1.3 var(--sans); }
+.tpl-chat .ch-me .ch-b { border-radius: 36px 36px 8px 36px; background: var(--accent); }
+.tpl-chat .ch-typing .ch-b { display: flex; gap: 14px; padding: 34px 36px; }
+.tpl-chat .ch-typing i { display: block; width: 20px; height: 20px; border-radius: 10px; background: var(--ink); }
+.tpl-chat .ch-time { position: absolute; left: 0; right: 0; text-align: center; font: 800 34px/1 var(--num); letter-spacing: 3px; color: var(--mute); }

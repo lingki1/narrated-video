@@ -1,0 +1,14 @@
+/* Template "podcast" (播客体): the narrator, the real waveform of the voice, and the words lighting up as they are said. */
+.tpl-podcast .nv-bg { background: var(--ink); }
+#viewport.tpl-podcast { background: var(--ink); }
+.tpl-podcast .pc-wrap { position: absolute; inset: 0; color: var(--paper); }
+.tpl-podcast .pc-title { position: absolute; left: 80px; right: 80px; top: 250px; font: 800 44px/1.2 var(--sans); letter-spacing: 6px; opacity: 0.7; text-align: center; }
+.tpl-podcast .pc-wave { position: absolute; left: 80px; right: 80px; top: 960px; height: 260px; display: flex; align-items: center; justify-content: space-between; }
+.tpl-podcast .pc-wave i { display: block; width: 12px; border-radius: 6px; background: var(--accent); }
+.tpl-podcast .pc-wrap.other .pc-wave i { background: var(--paper); }
+.tpl-podcast .pc-who { position: absolute; left: 0; right: 0; top: 1250px; text-align: center; font: 900 40px/1 var(--sans); letter-spacing: 8px; color: var(--accent); height: 40px; }
+.tpl-podcast .pc-words { position: absolute; left: 60px; right: 60px; top: 1310px; text-align: center; font: 900 84px/1.25 var(--serif); white-space: nowrap; }
+.tpl-podcast .pc-words span { color: var(--mute); }
+.tpl-podcast .pc-words span.said { color: var(--paper); }
+.tpl-podcast .pc-wrap.other .pc-words span.said { color: var(--accent); }
+.tpl-podcast .nv-end { color: var(--paper); }

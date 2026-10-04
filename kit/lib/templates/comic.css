@@ -1,0 +1,13 @@
+/* Template "comic" (漫画分镜): a page of panels, balloons and sound-effect words; narration in caption boxes under the page. */
+#viewport.tpl-comic { --subs-top: 1404px; --sub-size: 50px; }
+.tpl-comic .cm-page { position: absolute; left: 60px; top: 236px; width: 960px; height: 1120px; }
+.tpl-comic .cm-panel { position: absolute; background: #FFFFFF; border: 10px solid var(--ink); box-sizing: border-box; overflow: hidden; transform-origin: 50% 50%; }
+.tpl-comic .cm-balloon { position: absolute; padding: 18px 34px 24px; background: #FFFFFF; border: 8px solid var(--ink); border-radius: 60px; font-family: var(--serif); font-weight: 900; line-height: 1.2; color: var(--ink); white-space: nowrap; transform-origin: 50% 100%; z-index: 2; }
+.tpl-comic .cm-balloon::after { content: ''; position: absolute; bottom: -34px; width: 34px; height: 34px; background: #FFFFFF; border-right: 8px solid var(--ink); border-bottom: 8px solid var(--ink); transform: skewX(28deg) rotate(18deg); }
+.tpl-comic .cm-balloon.tail-left::after { left: 60px; }
+.tpl-comic .cm-balloon.tail-right::after { right: 60px; transform: skewX(-28deg) rotate(72deg); }
+.tpl-comic .cm-balloon.tail-none::after { display: none; }
+.tpl-comic .cm-sfx { position: absolute; font-family: var(--serif); font-weight: 900; line-height: 1; color: var(--paper); -webkit-text-stroke: 12px var(--ink); paint-order: stroke fill; white-space: nowrap; transform-origin: 50% 50%; z-index: 3; }
+.tpl-comic .cm-box { position: absolute; padding: 8px 18px 10px; background: var(--accent); border: 6px solid var(--ink); font: 900 38px/1.1 var(--sans); color: var(--ink); white-space: nowrap; z-index: 2; transform-origin: 0 0; }
+.tpl-comic .nv-sblock .plate { --rot: 0deg !important; background: #FFFFFF; color: var(--ink); border: 7px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); font-family: var(--sans); font-weight: 800; padding: 10px 26px 14px; }
+.tpl-comic .nv-card { display: none !important; }

@@ -1,0 +1,13 @@
+/* Template "split" (分屏对比): two halves with a tag each; the half being talked about grows a little, the other dims. */
+#viewport.tpl-split { --subs-top: 1420px; --sub-size: 50px; }
+.tpl-split .sp-frame { position: absolute; left: 60px; top: 226px; width: 960px; height: 1150px; border: 10px solid var(--ink); box-sizing: border-box; overflow: hidden; }
+.tpl-split .sp-half { position: absolute; left: 0; right: 0; overflow: hidden; }
+.tpl-split .sp-half::after { content: ''; position: absolute; inset: 0; background: var(--ink); opacity: var(--dim, 0); z-index: 3; pointer-events: none; }
+.tpl-split .sp-top { top: 0; background: var(--paper); color: var(--ink); border-bottom: 10px solid var(--ink); box-sizing: border-box; }
+.tpl-split .sp-bottom { background: var(--ink); color: var(--paper); }
+.tpl-split .sp-half em { position: absolute; left: 0; top: 0; padding: 12px 26px 16px; font: 900 44px/1 var(--sans); font-style: normal; letter-spacing: 6px; z-index: 2; }
+.tpl-split .sp-top em { background: var(--ink); color: var(--paper); }
+.tpl-split .sp-bottom em { background: var(--accent); color: var(--ink); }
+.tpl-split .sp-item { position: absolute; white-space: nowrap; }
+.tpl-split .sp-bottom .nv-plate { box-shadow: 7px 7px 0 var(--paper); }
+.tpl-split .nv-sblock .plate { --rot: 0deg !important; box-shadow: none; font-family: var(--sans); font-weight: 800; }

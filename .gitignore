@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+node_modules/
+.DS_Store
+Thumbs.db
+# research notes and anything about one particular project stay out of this repository
+references/research/
+_private/
