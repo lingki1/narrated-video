@@ -1,8 +1,8 @@
 """Set up a video project from the kit that ships with this skill.
 
 usage: python new_project.py <project folder> [--update]
-Copies kit/ (renderer, engine, tools, template) into the folder and creates PROFILE.md, videos/ (one folder per film: scene code, vo/, docs/, out/) and assets/voice-ref/.
-An existing project is left alone unless --update is given; --update refreshes render.mjs, lib/, tools/ and templates/ only
+Copies kit/ (renderer, engine, the 3D ink-wash library, tools, templates) into the folder and creates PROFILE.md, videos/ (one folder per film: scene code, vo/, docs/, out/) and assets/voice-ref/.
+An existing project is left alone unless --update is given; --update refreshes render.mjs, lib/, lib3d/, tools/ and templates/ only
 (your videos, assets, PROFILE.md, voices.json and video.config.json are never touched)."""
 import os
 import shutil
@@ -19,7 +19,7 @@ if not fresh and not update:
 os.makedirs(dst, exist_ok=True)
 for name in ('render.mjs', 'README.md', 'video.config.example.json', 'voices.example.json'):
     shutil.copy(os.path.join(KIT, name), os.path.join(dst, name))
-for folder in ('lib', 'tools', 'templates'):
+for folder in ('lib', 'lib3d', 'tools', 'templates'):
     shutil.copytree(os.path.join(KIT, folder), os.path.join(dst, folder), dirs_exist_ok=True, ignore=shutil.ignore_patterns('__pycache__'))
 for folder in ('videos', 'assets/voice-ref'):
     os.makedirs(os.path.join(dst, folder), exist_ok=True)

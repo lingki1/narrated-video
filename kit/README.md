@@ -17,14 +17,17 @@ lib/parts.js          科普片的画法：色板、气泡、手机、文档、�
 lib/motion.js         缓动、预览播放
 lib/audio.py beat.py  合成器：配乐和音效都是现算的，没有采样
 lib/sfx.py            有名字的音效（脚步、跳、落地、写字、弹出、成功、出错……）；会动的东西自己报声音，sound.py 用它合成
-templates/            每种模板一个小样（同一段 22 秒的示例），_common/ 是共用的示例台词和配乐
+lib3d/inkkit.py       三维水墨库（可选，要 Blender）：一幕写成一个短脚本，命令行渲一次，出按远近切好的分层底图（见技能 references/3d.md）
+lib/plates.js         把那些分层在网页里叠起来，按远近做视差；slot(depth) 在某个远近插一层自己的东西
+templates/            每种模板一个小样（同一段 22 秒的示例），_common/ 是共用的示例台词和配乐，_3d/ 是三维分层的最小例子
 lib/cover.js          封面页：三种画布（16:9 / 4:3 / 3:4）、放角色、画安全区（做法见技能 references/cover.md）
-tools/                新建片子、配音、量稿子、自检、预览、封面
+tools/                新建片子、配音、量稿子、自检、预览、封面；三维：shot3d / sheet3d / pack_frames / mist_plate，检查：motion_strip / frame_diff
 videos/<名字>/        一条片子的全部都在这一个文件夹里：
                         lines.js（台词）scene.js（画面）sound.py（配乐）vo.py（配音接入）cover.js（封面）
                         vo/       配音，一句一个 wav
                         docs/     稿子、记录、发布包、调研
-                        out/      声音、成片、抽帧（stills/）、封面（cover/）、预览包（artifact/）
+                        out/      声音、成片、抽帧（stills/）、封面（cover/）、预览包（artifact/）、三维的静帧和原始分层（shots/）、检查图（check/）
+                        blender/  三维场景脚本，一幕一个（用了三维才有）；img/<场景>/ 是出好的分层底图
                         archive/  留底的旧版（画面 code-<版本>/、配音 vo-<版本>/）
 samples/<模板>/       模板小样，结构同上（tools 会先找 videos/，再找 samples/）
 ```
@@ -62,7 +65,26 @@ python tools/cover_check.py 01-name                             # 缩到信息�
 ```
 
 需要：Node 18+、`playwright-core`（或 `playwright`）和一个 Chromium、ffmpeg、Python（numpy、scipy、soundfile、pillow）。
+三维分层是可选的，另外需要 Blender 5（在 5.2 上跑通；只走命令行）：路径写进 `video.config.json` 的 `"blender"`，或者让 `blender` 在 PATH 里。
 配音工具另外需要 Qwen3-TTS（`pip install qwen-tts`，约 5 GB 显存）和 openai-whisper、pypinyin、cn2an。没有显卡也可以用别的 TTS：只要每句出一个 `<id>.wav` 放进 `videos/<名字>/vo/` 就行。
+
+## 三维分层的一幕（可选）
+
+要纵深的大景用它：Blender 只渲一次，镜头和表演仍然在网页里。做法、规矩和检查在技能的 `references/3d.md`；最小的例子在 `templates/_3d/`。
+
+```bash
+cp -r templates/_3d/. videos/01-name/                          # blender/peaks.py、blender/flyover.py，并换掉 scene.js
+python tools/shot3d.py 01-name peaks still                     # 静帧 → out/shots/peaks.png（先看这个）
+python tools/shot3d.py 01-name peaks still sun=0               # 不带「留给网页画的东西」的静帧：分层要和它比
+python tools/shot3d.py 01-name peaks layers                    # 分层 → img/peaks/*.webp + layers.js，并报「叠回去和静帧差多少」
+node render.mjs videos/01-name --stills 0,9000,20000           # 网页里叠起来、镜头动起来的样子
+python tools/motion_strip.py 01-name 7800 10200 step=200 crop=1300,520,420,360 name=wave   # 一段动作切成连续帧放大看
+python tools/shot3d.py 01-name flyover fly step=15 samples=32  # 一段飞行，先每 15 帧渲一张
+python tools/sheet3d.py 01-name flyover                        # 拼成一张图看路线
+python tools/pack_frames.py 01-name flyover                    # 渲全以后：帧 → 图集 + frames.js
+python tools/frame_diff.py 01-name <毫秒A> <毫秒B> name=seam    # 接缝两边（飞行落到分层、一幕换一幕）是不是同一幅画
+python tools/mist_plate.py 01-name                             # 过场的云雾和纸纹（噪声算的）
+```
 
 ## 素材（开源物件图形）
 

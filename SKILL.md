@@ -14,7 +14,7 @@ description: 从零做一条「讲述型」短视频 / 中视频（竖屏 1080×
 | | 在哪 | 管什么 |
 |---|---|---|
 | 这个技能 | 这里 | 通用的做法：怎么选题、怎么写、怎么配音、怎么画、怎么检查 |
-| 工程模板（kit） | `kit/`，用 `scripts/new_project.py <文件夹>` 复制成一个项目 | 渲染器、叙事片内核 + 16 种画面模板（每种一个能直接跑的小样）、配音和预览工具 |
+| 工程模板（kit） | `kit/`，用 `scripts/new_project.py <文件夹>` 复制成一个项目 | 渲染器、叙事片内核 + 16 种画面模板（每种一个能直接跑的小样）、三维水墨库（可选，要 Blender）、配音和预览工具 |
 | 项目档案 | 项目里的 `PROFILE.md` | 这个项目自己的事：给谁看、谁在讲、配色、声音、红线、片尾。**每次开工先读它**；没有就先问清楚、写出来 |
 
 机器上的路径（浏览器、ffmpeg、模型）写在项目的 `video.config.json`；每个声音用哪条参考写在 `voices.json`。技能里不写死任何路径。
@@ -27,7 +27,7 @@ description: 从零做一条「讲述型」短视频 / 中视频（竖屏 1080×
 | 1 | 选题：一件小事 + 一个在场的讲述者。先查这群观众最近在说什么 | `references/topic.md` |
 | 2 | 写稿，存 `videos/<名字>/docs/<名字>.md`；台词进 `videos/<名字>/lines.js`；用 `script_measure.py` 量一遍。稿子里的事实和转述，**送配音之前**回一手出处核完；再交给别的代理审一遍（第一次听的观众 + 编辑），按意见改到复述对得上 | `references/writing.md` · `references/selfcheck.md` |
 | 3 | 配音：`vo_all.py` 一次生成 → `vo_qa.py` 查读错 →（讲述者是虚拟角色时 `voice_fx.py` 加电音，档位让人挑）→ `vo.py` 接进片子 | `references/voice.md` |
-| 4 | 画面：**先问清发哪里**（横屏平台用 16:9：`size / view`，见 `picture.md`「横屏」；竖屏平台用默认的 9:16），**再按内容挑模板**（2D 绘本、聊天记录、白板手绘、数据图表……16 种），`new_reel.py <名字> --template <模板>`；再在 `scene.js` 里写每句话说的时候画面上有什么；讲述者是角色时，每一幕让它亲手做事（`lib/actor.js`），不站着讲；横屏长片用 `lib/look.js`（镜头、布景、硬阴影、开源物件素材），主体要占到画面的六成以上；边写边 `--sweep`、抽关键帧看 | `references/templates.md` · `references/picture.md` |
+| 4 | 画面：**先问清发哪里**（横屏平台用 16:9：`size / view`，见 `picture.md`「横屏」；竖屏平台用默认的 9:16），**再按内容挑模板**（2D 绘本、聊天记录、白板手绘、数据图表……16 种），`new_reel.py <名字> --template <模板>`；再在 `scene.js` 里写每句话说的时候画面上有什么；讲述者是角色时，每一幕让它亲手做事（`lib/actor.js`），不站着讲；横屏长片用 `lib/look.js`（镜头、布景、硬阴影、开源物件素材），主体要占到画面的六成以上；边写边 `--sweep`、抽关键帧看。**要纵深的大景**（群山、云海、镜头往画里推）用三维分层：Blender 走命令行只出一次按远近切好的底图，镜头和表演仍然写在网页里，出片仍然从网页抽帧；先静帧、后分层，分层叠回去要和静帧是同一幅画 | `references/templates.md` · `references/picture.md` · `references/3d.md` |
 | 5 | 声音：`sound.py`（配乐 + 音效）→ `render.mjs --sound-only`。讲述者在画面里动手的片子，每个动作都要有声（大多自动带上） | `references/sound.md` |
 | 6 | 自检：抽帧拼图、完播扫描、响度；数字写进交付的话里 | `references/selfcheck.md` |
 | 7 | 给人看带声音的预览（本机 / 局域网 / 打包成网页）；按意见改 | `references/deliver.md` |
@@ -56,12 +56,15 @@ description: 从零做一条「讲述型」短视频 / 中视频（竖屏 1080×
 ```
 PROFILE.md  video.config.json  voices.json  render.mjs
 lib/        film.js + film.css（内核）  templates/<模板>.js|.css（16 种画面）  narration.js（旧片子用：内核 + board）
-            buddy.js（现成角色） motion.js  audio.py  beat.py
+            buddy.js（现成角色） motion.js  audio.py  beat.py  plates.js（把三维分层叠起来、按远近动）
+lib3d/      inkkit.py（三维水墨库，给 Blender 的场景脚本用：墨、淡彩、雾、山、角色、相机、切片出图；见 references/3d.md）
 templates/  _common/（示例台词、配音、配乐） <模板>/（小样：index.html scene.js style.css）
 tools/      new_reel.py（--template · --list）  tts/（vo_all · vo_qa · voice_fx · voice_design · script_measure）  contact_sheet.py
             retention_scan.py  lan_preview.py  artifact_preview.py
+            shot3d.py（静帧 / 分层 / 飞行）  sheet3d.py  pack_frames.py  mist_plate.py  motion_strip.py（动作切连续帧）  frame_diff.py（量接缝）
 videos/<名字>/  一条片子的全部：lines.js  scene.js  style.css  sound.py  vo.py  index.html  cover.js（画面和封面）
                 vo/（配音，一句一个 wav）  docs/（稿子、记录、发布包、调研）  out/（声音、成片、抽帧、封面、预览包）  archive/（留底的旧版）
+                用了三维的片子再加：blender/（场景脚本，一幕一个）  img/<场景>/（分层底图和它的索引 layers.js）
 samples/<模板>/ 模板小样（同样的结构）
 ```
 

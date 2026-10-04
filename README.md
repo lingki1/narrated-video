@@ -9,6 +9,7 @@ A Claude skill for making narrated videos end to end: topic, script, synthetic v
 - **选题和写稿**：一条片子只讲一件事；按块写、为耳朵写；科普怎么讲透；稿子怎么量、怎么找别人审。
 - **配音**：用文字描述设计出来的合成声音，一句一个文件；读错怎么查。
 - **画面**：每一帧都是时间的纯函数，用 HTML / SVG 画，无头浏览器逐帧截图，ffmpeg 合成。16 种画面模板，竖屏 9:16 和横屏 16:9。
+- **三维水墨的大景**（可选）：Blender 走命令行把一幕渲成按远近切好的分层底图，只渲一次；镜头、表演、特效仍然在网页里。
 - **配乐和音效**：全部现场合成，没有采样。
 - **封面**：单独设计而不是抽帧；三种画布、缩小检查、盲测。
 - **预览、渲染、发布**：带声音的预览先给人看，对方说可以了才渲染。
@@ -28,6 +29,7 @@ git clone https://github.com/lingki1/narrated-video ~/.claude/skills/narrated-vi
 - Node 18+、`playwright-core`（或 `playwright`）和一个 Chromium、ffmpeg
 - Python：numpy、scipy、soundfile、pillow
 - 配音：仓库里的工具用 Qwen3-TTS（约 5 GB 显存）和 openai-whisper；换成任何别的 TTS 也行，只要每句出一个 wav
+- 三维分层（可选）：Blender 5，只走命令行
 
 仓库里没有任何声音、模型、图片素材和字体文件。
 
@@ -35,8 +37,8 @@ git clone https://github.com/lingki1/narrated-video ~/.claude/skills/narrated-vi
 
 ```
 SKILL.md        入口：流程、不管什么项目都守的规矩、目录约定
-references/     每一步的做法：topic · writing · voice · picture · templates · sound · cover · selfcheck · deliver
-kit/            工程模板：渲染器、内核、16 种画面模板、工具（建片子、配音、自检、预览、封面）
+references/     每一步的做法：topic · writing · voice · picture · templates · 3d · sound · cover · selfcheck · deliver
+kit/            工程模板：渲染器、内核、16 种画面模板、三维水墨库、工具（建片子、配音、自检、预览、封面）
 scripts/        new_project.py（从 kit 建一个项目）
 ```
 
