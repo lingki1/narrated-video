@@ -120,7 +120,7 @@ def main():
     if gaps:
         L += ['', '## 台词间隔 > 1.5 s', ''] + [f'- {a}→{b} 空 {g / 1000:.1f} s' for a, b, g in gaps]
     L += ['', f'（相邻帧差中位数 {statistics.median(d for _, d in diffs):.2f}）', '',
-          '人工项（开头反差、开放循环、收藏点、分享句、结尾提问、封面标题、AI 内容声明）按技能 references/selfcheck.md 的清单逐条过。']
+          '人工项（遮挡区、封面、AI 内容声明）按技能 references/selfcheck.md 的清单逐条过。']
     report = '\n'.join(L) + '\n'
     open(os.path.join(out_dir, 'report.md'), 'w', encoding='utf-8', newline='\n').write(report)
     print(report)

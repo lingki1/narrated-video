@@ -49,7 +49,7 @@ film.start({
 ## 样式
 
 - 配色只有主题里那几个：`ink`、`paper`、一个强调色 `accent`（和深一档的 `accentDeep`）、夜色 `night`。写成 CSS 变量 `var(--accent)`；SVG 里用 `film.theme.accent`。强调色跟着片子的那一样东西走（保温灯就是橙的）。
-- 纯色平涂。不用渐变、光晕、多色背景。质感靠硬投影（`7px 7px 0`）、微微歪的字条、粗细对比。
+- 默认纯色平涂：质感靠硬投影（`7px 7px 0`）、微微歪的字条、粗细对比。项目要电影感时可以用光：发光、聚光灯、粒子、景深、材质的明暗（项目的 PROFILE 说了算）；不管哪种，都不用装饰性的大片渐变底色。
 - 现成零件（`lib/film.css`）：`nv-plate`（字条：默认黑底，`.accent` 强调色底，`.paper` 浅底）、`nv-chip`（描边小标签）、`nv-stamp`（图章）、`nv-doc`（一页纸）、`nv-photo`（相片框）、`nv-t nv-serif / nv-sans / nv-num`（大字、数字）。片子自己的零件写在 `style.css`，类名加前缀。
 - 夜里的镜头：`el('div', 'nv-shot night')`，深底上用 `.paper` 和 `.accent` 的字条，线条用 `var(--paper)`。
 - 字要大：画板里正文 44 px 起，重点 80–150 px。长句子自动缩字号的只有字幕；画板里的字自己算宽度（一个汉字 ≈ 字号的宽度，加左右 48 px 内边距），别出框。

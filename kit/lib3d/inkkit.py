@@ -604,15 +604,33 @@ def buddy(location, facing=0.0, name='buddy', card=None, arm=0.0, lean=0.0, gaze
         r = max(0.3, min(0.75, r))
         return (x, -0.84 * math.sqrt(max(0.01, r * r - x * x)) - lift, z)
 
+    # The two eyes are the same eye, mirrored: the same size, the same distance either side of the middle, each lying flat on
+    # the body where it sits (turned to the body's own slope there, so neither pokes out nor shows its edge), each with its pupil
+    # ON its white wherever it looks. (A pupil placed on the body's surface instead sinks into the white on the side it looks
+    # toward and leaves that eye blank; eyes set off-centre and both facing straight ahead look like two different eyes.)
+    # The gaze is kept inside the white.
+    EW, ET, EH, EX = 0.175, 0.07, 0.205, 0.27
+    gx, gz = gaze; over = math.hypot(gx / (EW * 0.5), gz / (EH * 0.48))
+    if over > 1.0:
+        gx, gz = gx / over, gz / over
+
     for sx in (-1, 1):
-        ex = 0.27 * sx + 0.03
-        ball(f'{n}-eye{sx}', on_face(ex, 1.76, 0.0), (0.175, 0.07, 0.205), M['eye'], up)
-        ball(f'{n}-pupil{sx}', on_face(ex + gaze[0], 1.755 + gaze[1], 0.055), (0.095, 0.035, 0.115), M['pupil'], up)
-        ball(f'{n}-glint{sx}', on_face(ex + gaze[0] + 0.04, 1.82 + gaze[1], 0.085), (0.032, 0.015, 0.032), M['eye'], up)
-        ball(f'{n}-blush{sx}', on_face(0.5 * sx + 0.03, 1.47, -0.01), (0.12, 0.04, 0.075), M['blush'], up, rot=(0, 0, math.radians(38 * sx)))
+        c = on_face(EX * sx, 1.76, 0.0); rr = 0.745
+        th = math.atan2(c[0] / rr ** 2, -c[1] / (0.84 ** 2 * rr ** 2))                 # how far the body's surface has turned from straight ahead here
+        cs, sn = math.cos(th), math.sin(th)
+
+        def on_eye(dx, dz, lift, c=c, cs=cs, sn=sn):
+            """a point on the front of this eye's white, (dx, dz) from its middle, `lift` in front of it"""
+            dy = -ET * math.sqrt(max(0.04, 1.0 - (dx / EW) ** 2 - (dz / EH) ** 2)) - lift
+            return (c[0] + dx * cs - dy * sn, c[1] + dx * sn + dy * cs, c[2] + dz)
+
+        ball(f'{n}-eye{sx}', c, (EW, ET, EH), M['eye'], up, rot=(0, 0, th))
+        ball(f'{n}-pupil{sx}', on_eye(gx, gz - 0.005, 0.012), (0.095, 0.035, 0.115), M['pupil'], up, rot=(0, 0, th))
+        ball(f'{n}-glint{sx}', on_eye(gx + 0.04, gz + 0.06, 0.05), (0.032, 0.015, 0.032), M['eye'], up, rot=(0, 0, th))
+        ball(f'{n}-blush{sx}', on_face(0.5 * sx, 1.47, -0.01), (0.12, 0.04, 0.075), M['blush'], up, rot=(0, 0, math.radians(38 * sx)))
         tube(f'{n}-leg{sx}', [(0.23 * sx, 0.0, 0.72), (0.23 * sx, 0.0, 0.4), (0.23 * sx, -0.02, 0.1)], [0.062, 0.062, 0.062], M['limb'], res=4, parent=root)
         ball(f'{n}-shoe{sx}', (0.23 * sx, -0.09, 0.1), (0.175, 0.27, 0.105), M['shoe'], root)
-    ball(f'{n}-mouth', on_face(0.05, 1.5, 0.0), (0.058, 0.03, 0.078), M['mouth'], up)
+    ball(f'{n}-mouth', on_face(0.0, 1.5, 0.0), (0.058, 0.03, 0.078), M['mouth'], up)
     tube(f'{n}-arm_l', [(-0.68, -0.02, 1.3), (-0.84, -0.03, 1.08), (-0.86, -0.06, 0.86)], [0.058, 0.055, 0.052], M['limb'], res=6, parent=up)
     ball(f'{n}-hand_l', (-0.86, -0.06, 0.84), (0.095, 0.095, 0.095), M['limb'], up)
     # the right arm hangs from a pivot at the shoulder, with whatever it holds

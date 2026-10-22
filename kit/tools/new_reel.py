@@ -42,6 +42,5 @@ for f in ('index.html', 'scene.js'):
     open(p, 'w', encoding='utf-8', newline='\n').write(s)
 for sub in ('vo', 'docs', 'out'):
     os.makedirs(os.path.join(dst, sub), exist_ok=True)
-print(f'videos/{name} created from template "{template}". Next: write videos/{name}/docs/{name}.md and videos/{name}/lines.js, then')
-print(f'  python tools/tts/script_measure.py videos/{name}/lines.js')
+print(f'videos/{name} created from template "{template}". Next: put the script in videos/{name}/docs/{name}.md and videos/{name}/lines.js, then')
 print(f'  node render.mjs videos/{name} --stills 0,3000')

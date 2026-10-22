@@ -21,11 +21,11 @@ lib3d/inkkit.py       三维水墨库（可选，要 Blender）：一幕写成�
 lib/plates.js         把那些分层在网页里叠起来，按远近做视差；slot(depth) 在某个远近插一层自己的东西
 templates/            每种模板一个小样（同一段 22 秒的示例），_common/ 是共用的示例台词和配乐，_3d/ 是三维分层的最小例子
 lib/cover.js          封面页：三种画布（16:9 / 4:3 / 3:4）、放角色、画安全区（做法见技能 references/cover.md）
-tools/                新建片子、配音、量稿子、自检、预览、封面；三维：shot3d / sheet3d / pack_frames / mist_plate，检查：motion_strip / frame_diff
+tools/                新建片子、配音、自检、预览、封面；三维：shot3d / sheet3d / pack_frames / mist_plate，检查：motion_strip / frame_diff
 videos/<名字>/        一条片子的全部都在这一个文件夹里：
                         lines.js（台词）scene.js（画面）sound.py（配乐）vo.py（配音接入）cover.js（封面）
                         vo/       配音，一句一个 wav
-                        docs/     稿子、记录、发布包、调研
+                        docs/     稿子、记录、发布包
                         out/      声音、成片、抽帧（stills/）、封面（cover/）、预览包（artifact/）、三维的静帧和原始分层（shots/）、检查图（check/）
                         blender/  三维场景脚本，一幕一个（用了三维才有）；img/<场景>/ 是出好的分层底图
                         archive/  留底的旧版（画面 code-<版本>/、配音 vo-<版本>/）
@@ -37,8 +37,7 @@ samples/<模板>/       模板小样，结构同上（tools 会先找 videos/，
 ```bash
 python tools/new_reel.py --list                               # 先挑画面模板（怎么挑见技能的 references/templates.md）
 python tools/new_reel.py 01-name "标题" --template picture
-# 写 videos/01-name/docs/01-name.md 和 videos/01-name/lines.js，然后量一遍
-python tools/tts/script_measure.py videos/01-name/lines.js
+# 稿子放进 videos/01-name/docs/01-name.md，台词放进 videos/01-name/lines.js（一行一句：编号、停顿毫秒、文字）
 # 配音（voices.json 里要有每个声音的参考）
 python tools/tts/vo_all.py 01-name
 python tools/tts/vo_qa.py videos/01-name/lines.js videos/01-name/vo --model medium

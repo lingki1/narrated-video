@@ -1,12 +1,11 @@
 # narrated-video
 
-一个 Claude 技能（Agent Skill）：从选题到成片，做一条「讲述型」视频。一个声音把一件事讲够，画面跟着讲的内容走。全流程一个人（或一个代理）就能做完，不需要拍摄、素材库和剪辑软件。
+一个 Claude 技能（Agent Skill）：把一份现成的稿子做成一条「讲述型」视频。一个声音讲，画面跟着讲的内容走。全流程一个人（或一个代理）就能做完，不需要拍摄、素材库和剪辑软件。只管制作，不管选题和写稿。
 
-A Claude skill for making narrated videos end to end: topic, script, synthetic voice, HTML/SVG pictures rendered frame by frame to MP4, synthesized music, self-checks, cover design. The documentation is in Chinese.
+A Claude skill for producing narrated videos from a finished script: synthetic voice, HTML/SVG pictures rendered frame by frame to MP4, synthesized music, self-checks, previews, cover design. It covers production only, not topics or scriptwriting. The documentation is in Chinese.
 
 ## 它管什么
 
-- **选题和写稿**：一条片子只讲一件事；按块写、为耳朵写；科普怎么讲透；稿子怎么量、怎么找别人审。
 - **配音**：用文字描述设计出来的合成声音，一句一个文件；读错怎么查。
 - **画面**：每一帧都是时间的纯函数，用 HTML / SVG 画，无头浏览器逐帧截图，ffmpeg 合成。16 种画面模板，竖屏 9:16 和横屏 16:9。
 - **三维水墨的大景**（可选）：Blender 走命令行把一幕渲成按远近切好的分层底图，只渲一次；镜头、表演、特效仍然在网页里。
@@ -37,7 +36,7 @@ git clone https://github.com/lingki1/narrated-video ~/.claude/skills/narrated-vi
 
 ```
 SKILL.md        入口：流程、不管什么项目都守的规矩、目录约定
-references/     每一步的做法：topic · writing · voice · picture · templates · 3d · sound · cover · selfcheck · deliver
+references/     每一步的做法：voice · picture · templates · 3d · sound · cover · selfcheck · deliver
 kit/            工程模板：渲染器、内核、16 种画面模板、三维水墨库、工具（建片子、配音、自检、预览、封面）
 scripts/        new_project.py（从 kit 建一个项目）
 ```
